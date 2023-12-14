@@ -1,8 +1,11 @@
 import { defineDocumentType, makeSource } from "contentlayer/source-files";
 
+import rehypePrettyCode from "rehype-pretty-code";
+
 export const BlogPost = defineDocumentType(() => ({
   name: "Post",
-  filePathPattern: `**/*.md`,
+  filePathPattern: `**/*.mdx`,
+  contentType: "mdx",
   fields: {
     title: {
       type: "string",
@@ -36,7 +39,15 @@ export const BlogPost = defineDocumentType(() => ({
   },
 }));
 
+/** @type {import('rehype-pretty-code').Options} */
+const rehypePrettyCodeOptions = {
+  theme: "min-dark",
+};
+
 export default makeSource({
   contentDirPath: "content",
   documentTypes: [BlogPost],
+  mdx: {
+    rehypePlugins: [[rehypePrettyCode, rehypePrettyCodeOptions]],
+  },
 });

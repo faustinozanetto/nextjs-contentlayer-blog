@@ -25,3 +25,54 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
+
+[data-rehype-pretty-code-fragment] {
+  overflow: hidden;
+  border-radius: 0.25rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+[data-rehype-pretty-code-fragment] code {
+  display: grid;
+  min-width: 100%;
+  overflow-wrap: break-word;
+  overflow-x: auto;
+  border: none;
+  font-size: 0.875rem;
+  line-height: 1.5rem;
+  counter-reset: line;
+}
+
+[data-rehype-pretty-code-fragment] pre {
+  border-radius: 0.25rem;
+  font-size: 0.875rem;
+  line-height: 1.5rem;
+}
+
+[data-rehype-pretty-code-title] {
+  color: rgba(255, 255, 255, 0.8);
+  background-color: rgb(31, 31, 31);
+  font-size: 1rem;
+  line-height: 1rem;
+  font-weight: 600;
+  border-radius: 0.25rem;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+[data-rehype-pretty-code-fragment] [data-line] {
+  padding-right: 0.5rem;
+}
+
+[data-rehype-pretty-code-fragment] [data-line]::before {
+  color: rgba(255, 255, 255, 0.5);
+  counter-increment: line;
+  content: counter(line);
+  display: inline-block;
+  width: 1rem;
+  margin-right: 1rem;
+  text-align: right;
+}
